@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9ff;
+  color: #1a1a1a;
+  overflow: hidden;
+  touch-action: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hide scrollbars */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Views */
+.view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #f8f9ff;
+  overflow: hidden;
+  visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Floating animations */
+.floating-circle {
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+.floating-circle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.floating-circle:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.floating-circle:nth-child(3) {
+  animation-delay: -4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.view--2 {
+  overflow: hidden;
+}
+
+/* Gallery Styles */
+.gallery {
+  display: flex;
+  margin-left: 12vw;
+  padding-right: 12vw;
+  height: 100vh;
+  align-items: center;
+}
+
+.gallery__item {
+  margin: 0 3vw;
+  display: grid;
+  grid-template-areas: '... ...' 
+                       '... gallery-image'
+                       '... ...' ;
+  grid-template-columns: 8rem 21vmax;
+  grid-template-rows: 8rem 28vmax 3rem;
+  will-change: transform;
+  transform-origin: center center;
+  transition: transform 0.1s ease-out;
+}
+
+.gallery__item-img {
+  grid-area: gallery-image;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.gallery__item-imginner {
+  width: 100%;
+  height: calc(100% + 14vh);
+  margin-top: -7vh;
+  background-size: cover;
+  background-position: 50% 25%;
+  will-change: transform;
+  transform-origin: center center;
+  transition: filter 0.3s ease-out;
+}
+
+.gallery__item-caption {
+  grid-area: 1 / 1 / 4 / 3;
+  display: grid;
+  grid-template-areas: 'gallery-number gallery-title' 
+                       'gallery-link ...'
+                       'gallery-link gallery-tags' ;
+  grid-template-columns: 8rem auto;
+  grid-template-rows: 8rem auto 3rem;
+}
+
+.gallery__item-title {
+  grid-area: gallery-title;
+  margin: 0;
+  font-size: clamp(1rem,4vw,3rem);
+  font-weight: 500;
+  font-style: normal;
+  color: #f0ecec;
+  align-self: center;
+  font-family: 'Unbounded', sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.gallery__item-number {
+  grid-area: gallery-number;
+  font-size: clamp(1rem,4vw,3rem);
+  justify-self: end;
+  padding-right: 2rem;
+  color: #d1d1d1;
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.gallery__item-tags {
+  grid-area: gallery-tags;
+  justify-self: end;
+  font-size: 1.5rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+.gallery__item-link {
+  grid-area: gallery-link;
+  align-self: end;
+  font-size: 1.5rem;
+  background: #2a2a2a;
+  color: #fff;
+  text-decoration: underline;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery__item-link:hover {
+  background: #3d3d3d;
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1.05);
+}
+
+.gallery__text {
+  font-size: 20vw;
+  line-height: 0.8;
+  margin: 0 10vw 0 14vw;
+  text-transform: lowercase;
+  color: transparent;
+  -webkit-text-stroke: 1px #463832;
+  text-stroke: 1px #463832;
+  font-family: moret, serif;
+  font-weight: 800;
+  font-style: italic;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+.gallery__text-inner {
+  display: block;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Cursor */
+.cursor {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor__inner {
+  fill: #ffffff;
+  stroke: none;
+  stroke-width: 1px;
+  transition: transform 0.3s ease;
+}
+
+@media (any-pointer: fine) {
+  .cursor {
+    display: block;
+  }
+}
+
+/* Loading state */
+.loading {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  position: fixed;
+  z-index: 1000;
+}
+
+.loading::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #131212;
+}
+
+.loading::after {
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  margin: -30px 0 0 -30px;
+  border-radius: 50%;
+  opacity: 0.4;
+  background: #d75828;
+  animation: loaderAnim 0.7s linear infinite alternate forwards;
+}
+
+@keyframes loaderAnim {
+  to {
+    opacity: 1;
+    transform: scale3d(0.5,0.5,1);
+  }
+}
+
+/* Locomotive Scroll */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.hero-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+
+.hero-sub {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+/* Add new styles for floating elements animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}

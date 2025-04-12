@@ -9,6 +9,7 @@ import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { useScrollStore } from './store/useScrollStore';
 import './styles/singleProject.css';
+import personImage from './assets/img/person.png';
 
 gsap.registerPlugin(Observer);
 
@@ -188,21 +189,21 @@ function AppContent() {
 
             {/* Main Content */}
             <div className="flex h-screen relative">
-              {/* Left Content */}
-              <div className="w-1/2 flex flex-col justify-center px-24">
-                {/* Social Links - Left Side */}
-                <div className="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6">
-                  <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
-                    <Facebook className="w-5 h-5" />
-                  </a>
-                  <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
-                    <Instagram className="w-5 h-5" />
-                  </a>
-                </div>
+              {/* Social Links - Left Side */}
+              <div className="absolute left-12 top-1/2 -translate-y-1/2 flex flex-col gap-6">
+                <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
+                  <Twitter className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-[#4B4DED] transition-colors">
+                  <Instagram className="w-5 h-5" />
+                </a>
+              </div>
 
+              {/* Left Content */}
+              <div className="w-1/2 flex flex-col justify-center px-24 relative z-10">
                 {/* Main Text Content */}
                 <div className="bg-white rounded-full px-6 py-3 inline-flex items-center gap-2 w-max mb-6 shadow-sm">
                   <span className="text-xl">👋 Hello, I am</span>
@@ -219,10 +220,23 @@ function AppContent() {
               {/* Right Content */}
               <div className="w-1/2 relative">
                 {/* Background Circle */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#f0f2ff] rounded-full -translate-x-1/4"></div>
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full -translate-x-1/4 z-0"
+                  style={{
+                    background: 'radial-gradient(circle at 25% 50%, rgba(240, 242, 255, 0.2) 0%, rgba(240, 242, 255, 0.6) 25%, rgba(240, 242, 255, 0.9) 50%, rgba(240, 242, 255, 1) 75%)'
+                  }}
+                ></div>
+                
+                {/* Person Image */}
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full flex items-center justify-center z-5">
+                  <img 
+                    src={personImage} 
+                    alt="Micael - 3D Illustrator & Interaction Designer" 
+                    className="max-h-[85%] object-contain z-5" 
+                  />
+                </div>
 
                 {/* Floating Elements */}
-                <div className="absolute right-24 top-1/4 flex flex-col gap-24">
+                <div className="absolute right-24 top-1/4 flex flex-col gap-24 z-10">
                   <div className="floating-circle w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-sm font-medium">ANIMATION</span>
                   </div>
@@ -235,7 +249,7 @@ function AppContent() {
                 </div>
 
                 {/* Navigation Dots */}
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+                <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
                   {[1, 2, 3, 4, 5, 6].map((dot) => (
                     <div 
                       key={dot} 

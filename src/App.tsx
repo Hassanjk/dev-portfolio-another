@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Menu, Twitter, Facebook, Instagram } from 'lucide-react';
+import { Twitter, Facebook, Instagram } from 'lucide-react';
 import Projects from './pages/Projects';
 import AboutMe from './pages/AboutMe';
 import Contact from './pages/Contact';
 import SingleProject from './pages/SingleProject';
+import Header from './components/Header';
 import { gsap } from 'gsap';
 import { Observer } from 'gsap/Observer';
 import { useScrollStore } from './store/useScrollStore';
@@ -165,28 +166,13 @@ function AppContent() {
 
   return (
     <div className="bg-[#f8f9ff] min-h-screen text-gray-900 overflow-hidden">
+      {/* Sticky Header */}
+      <Header onMenuClick={() => console.log('Menu clicked')} />
+      
       <div className="relative w-full h-screen overflow-hidden">
         {/* View 1 - Home */}
         <div ref={view1Ref} className="view view--1">
           <div className="relative min-h-screen">
-            {/* Header/Navigation */}
-            <header className="absolute top-0 left-0 w-full z-10 px-12 py-6 flex justify-between items-center">
-              <div className="logo flex items-center">
-                <span className="text-[#4B4DED] text-2xl font-bold">MICA</span>
-                <span className="text-[#4B4DED] text-2xl">EL</span>
-              </div>
-              <nav className="hidden md:flex items-center space-x-12">
-                <a href="#cases" className="text-gray-600 hover:text-[#4B4DED] transition-colors">CASES</a>
-                <a href="#services" className="text-gray-600 hover:text-[#4B4DED] transition-colors">SERVICES</a>
-                <a href="#resume" className="text-gray-600 hover:text-[#4B4DED] transition-colors">RESUME</a>
-                <a href="#about" className="text-gray-600 hover:text-[#4B4DED] transition-colors">ABOUT ME</a>
-                <a href="#contact" className="text-gray-600 hover:text-[#4B4DED] transition-colors">CONTACT</a>
-              </nav>
-              <button className="md:hidden text-[#4B4DED]">
-                <Menu size={24} />
-              </button>
-            </header>
-
             {/* Main Content */}
             <div className="flex h-screen relative">
               {/* Social Links - Left Side */}
@@ -219,24 +205,25 @@ function AppContent() {
 
               {/* Right Content */}
               <div className="w-1/2 relative">
-                {/* Background Circle */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full -translate-x-1/4 z-0"
-                  style={{
-                    background: 'radial-gradient(circle at 25% 50%, rgba(240, 242, 255, 0.2) 0%, rgba(240, 242, 255, 0.6) 25%, rgba(240, 242, 255, 0.9) 50%, rgba(240, 242, 255, 1) 75%)'
-                  }}
-                ></div>
-                
-                {/* Person Image */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-full flex items-center justify-center z-5">
+                {/* Circle and Person Container */}
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-1/4 w-[800px] h-[800px] flex items-center justify-center">
+                  {/* Background Circle */}
+                  <div className="absolute inset-0 rounded-full z-0"
+                    style={{
+                      background: 'radial-gradient(circle at 25% 50%, rgba(240, 242, 255, 0.2) 0%, rgba(240, 242, 255, 0.6) 25%, rgba(240, 242, 255, 0.9) 50%, rgba(240, 242, 255, 1) 75%)'
+                    }}
+                  ></div>
+                  
+                  {/* Person Image - Centered in the circle */}
                   <img 
                     src={personImage} 
                     alt="Micael - 3D Illustrator & Interaction Designer" 
-                    className="max-h-[85%] object-contain z-5" 
+                    className="max-h-[85%] object-contain z-5 relative" 
                   />
                 </div>
 
                 {/* Floating Elements */}
-                <div className="absolute right-24 top-1/4 flex flex-col gap-24 z-10">
+                <div className="absolute right-24 top-[15%] flex flex-col gap-20 z-10">
                   <div className="floating-circle w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg">
                     <span className="text-sm font-medium">ANIMATION</span>
                   </div>
@@ -247,22 +234,12 @@ function AppContent() {
                     <span className="text-sm font-medium">ILLUSTRATION</span>
                   </div>
                 </div>
-
-                {/* Navigation Dots */}
-                <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
-                  {[1, 2, 3, 4, 5, 6].map((dot) => (
-                    <div 
-                      key={dot} 
-                      className={`w-2 h-2 rounded-full ${dot === 1 ? 'bg-[#4B4DED]' : 'bg-gray-300'}`}
-                    ></div>
-                  ))}
-                </div>
               </div>
             </div>
 
             {/* Copyright */}
             <div className="absolute bottom-6 right-12 text-sm text-gray-500">
-              © 2020 MICAEL<br />
+              © 2025 MICAEL<br />
               ALL RIGHTS RESERVED
             </div>
           </div>

@@ -121,7 +121,7 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
   ];
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-screen overflow-hidden bg-[#f8f9ff]">
       <main data-scroll-container className="h-full">
         <div className="content">
           <div className="gallery" id="gallery">
@@ -135,8 +135,8 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
                   data-scroll-speed="-4" 
                   data-scroll-direction="vertical"
                 >
-                  <ArrowUp />
-                  <div className="rotating-text">
+                  <ArrowUp className="text-[#4B4DED]" />
+                  <div className="rotating-text text-[#5D6CD6]">
                     <svg viewBox="0 0 100 100" width="100" height="100">
                       <defs>
                         <path id="circle" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
@@ -150,7 +150,7 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
                   </div>
                 </div>
               </div>
-              <div className="scroll-indicator">
+              <div className="scroll-indicator text-[#5D6CD6]">
                 <ArrowRight />
                 <span>scroll to explore</span>
               </div>
@@ -178,7 +178,7 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
                 </div>
                 <figcaption className="gallery__item-caption">
                   <h2 
-                    className="gallery__item-title" 
+                    className="gallery__item-title text-[#4B4DED]" 
                     data-scroll 
                     data-scroll-speed={idx % 2 === 0 ? "1.5" : "-1.5"}
                     data-scroll-direction="vertical"
@@ -186,20 +186,20 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
                     {projectTitles[num-1]}
                   </h2>
                   <span 
-                    className="gallery__item-number"
+                    className="gallery__item-number text-[#5D6CD6]"
                     data-scroll 
                     data-scroll-speed={idx % 2 === 0 ? "2" : "-2"}
                     data-scroll-direction="vertical"
                   >
                     {String(num).padStart(2, '0')}
                   </span>
-                  <p className="gallery__item-tags">
+                  <p className="gallery__item-tags text-gray-700">
                     <span>#design</span>
                     <span>#creative</span>
                     <span>#development</span>
                   </p>
                   <a 
-                    className="gallery__item-link" 
+                    className="gallery__item-link bg-[#4B4DED] hover:bg-black text-white" 
                     onClick={() => onSelectProject(num)}
                     style={{ cursor: 'pointer' }}
                   >
@@ -209,16 +209,16 @@ const Projects = React.forwardRef<HTMLDivElement, ProjectsProps>(({ onNavigateBa
               </figure>
             ))}
             <div className="about-me-container">
-              <div className="about-me-card"
+              <div className="about-me-card bg-white shadow-lg border border-gray-100"
                 onClick={onNavigateToAbout}
                 data-scroll 
                 data-scroll-speed="2"
                 data-scroll-direction="vertical"
               >
-                <h3 className="about-me-title">About Me</h3>
-                <p className="about-me-subtitle">Let's work together</p>
-                <div className="about-me-circle">
-                  <ArrowRight />
+                <h3 className="about-me-title text-[#4B4DED]">About Me</h3>
+                <p className="about-me-subtitle text-gray-700">Let's work together</p>
+                <div className="about-me-circle bg-[#4B4DED] hover:bg-black transition-colors">
+                  <ArrowRight className="text-white" />
                 </div>
               </div>
             </div>

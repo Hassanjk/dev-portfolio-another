@@ -80,6 +80,7 @@ body {
   padding-right: 12vw;
   height: 100vh;
   align-items: center;
+  background-color: #f8f9ff;
 }
 
 .gallery__item {
@@ -132,7 +133,6 @@ body {
   font-size: clamp(1rem,4vw,3rem);
   font-weight: 500;
   font-style: normal;
-  color: #f0ecec;
   align-self: center;
   font-family: 'Unbounded', sans-serif;
   letter-spacing: -0.03em;
@@ -170,9 +170,9 @@ body {
   grid-area: gallery-link;
   align-self: end;
   font-size: 1.5rem;
-  background: #2a2a2a;
+  background: #4B4DED;
   color: #fff;
-  text-decoration: underline;
+  text-decoration: none;
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -185,7 +185,7 @@ body {
 }
 
 .gallery__item-link:hover {
-  background: #3d3d3d;
+  background: #000;
   color: #fff;
   text-decoration: none;
   transform: scale(1.05);
@@ -335,4 +335,32 @@ html.has-scroll-dragging {
 
 .floating {
   animation: float 3s ease-in-out infinite;
+}
+
+/* About Me Card Styles */
+.about-me-card {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.about-me-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.about-me-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  transition: all 0.3s ease;
 }

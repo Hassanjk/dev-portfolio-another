@@ -166,8 +166,8 @@ function AppContent() {
 
   return (
     <div className="bg-[#f8f9ff] min-h-screen text-gray-900 overflow-hidden">
-      {/* Sticky Header */}
-      <Header onMenuClick={() => console.log('Menu clicked')} />
+      {/* Sticky Header with Hamburger Menu */}
+      <Header />
       
       <div className="relative w-full h-screen overflow-hidden">
         {/* View 1 - Home */}
